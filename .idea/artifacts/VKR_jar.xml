@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="VKR:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/VKR_jar</output-path>
+    <root id="archive" name="VKR.jar">
+      <element id="module-output" name="VKR" />
+    </root>
+  </artifact>
+</component>

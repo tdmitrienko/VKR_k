@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="633.0" prefWidth="1244.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Controller">
+    <top>
+        <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+            <children>
+                <HBox prefHeight="28.0" prefWidth="1039.0">
+                    <children>
+                        <Label prefHeight="43.0" prefWidth="1202.0" text="Расчет концентрации вредных химических веществ" textAlignment="RIGHT">
+                            <font>
+                                <Font size="29.0" />
+                            </font>
+                            <HBox.margin>
+                                <Insets left="100.0" />
+                            </HBox.margin>
+                            <BorderPane.margin>
+                                <Insets />
+                            </BorderPane.margin>
+                            <padding>
+                                <Insets left="100.0" />
+                            </padding>
+                        </Label>
+                    </children>
+                </HBox>
+                <HBox prefHeight="49.0" prefWidth="1039.0">
+                    <children>
+                        <Label text="Объем помещения">
+                            <HBox.margin>
+                                <Insets right="10.0" />
+                            </HBox.margin></Label>
+                        <TextField fx:id="V" prefHeight="31.0" prefWidth="94.0">
+                            <HBox.margin>
+                                <Insets />
+                            </HBox.margin></TextField>
+                        <Label text="м³">
+                            <HBox.margin>
+                                <Insets right="30.0" />
+                            </HBox.margin>
+                            <font>
+                                <Font size="20.0" />
+                            </font>
+                        </Label>
+                        <Label text="Температура">
+                            <HBox.margin>
+                                <Insets right="10.0" />
+                            </HBox.margin></Label>
+                        <TextField fx:id="t" prefHeight="31.0" prefWidth="69.0" />
+                        <Label text="°C">
+                            <font>
+                                <Font size="17.0" />
+                            </font>
+                     <HBox.margin>
+                        <Insets right="30.0" />
+                     </HBox.margin>
+                        </Label>
+                  <Label layoutX="273.0" layoutY="10.0" text="Коэффициет воздухообмена (0-1))">
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextField fx:id="kw" layoutX="356.0" layoutY="10.0" prefHeight="31.0" prefWidth="69.0" />
+                    </children>
+                </HBox>
+                <HBox prefHeight="48.0" prefWidth="1039.0">
+                    <children>
+                        <Label text="Группа стоительных материалов">
+                            <HBox.margin>
+                                <Insets right="10.0" />
+                            </HBox.margin></Label>
+                        <ComboBox fx:id="GSM" onAction="#selectMaterials" prefHeight="31.0" prefWidth="358.0" promptText="Выберите группу строительных материалов" />
+                    </children>
+                </HBox>
+                <HBox prefHeight="51.0" prefWidth="1039.0">
+                    <children>
+                        <Label text="Строительный материал">
+                            <HBox.margin>
+                                <Insets right="10.0" />
+                            </HBox.margin></Label>
+                        <ComboBox fx:id="SM" onAction="#selectMark" prefHeight="31.0" prefWidth="225.0" promptText="Строительный материал">
+                            <HBox.margin>
+                                <Insets right="30.0" />
+                            </HBox.margin></ComboBox>
+                        <Label text="Марка" />
+                        <ComboBox fx:id="mark" prefHeight="31.0" prefWidth="126.0" promptText="Марка">
+                            <HBox.margin>
+                                <Insets right="20.0" />
+                            </HBox.margin>
+                        </ComboBox>
+                        <Label text="Площадь строительного материала">
+                            <HBox.margin>
+                                <Insets right="10.0" />
+                            </HBox.margin></Label>
+                        <TextField fx:id="S" prefHeight="31.0" prefWidth="69.0" />
+                        <Label text="м²">
+                            <font>
+                                <Font size="23.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER_RIGHT" prefHeight="46.0" prefWidth="1039.0">
+                    <children>
+                  <Button mnemonicParsing="false" onAction="#clear" text="Очистить" />
+                        <Button mnemonicParsing="false" onAction="#add" text="Добавить" />
+                        <Button mnemonicParsing="false" onAction="#delete" text="Удалить">
+                            <HBox.margin>
+                                <Insets right="20.0" />
+                            </HBox.margin>
+                        </Button>
+                        <Button mnemonicParsing="false" onAction="#calculateREZ" text="Рассчитать">
+                            <HBox.margin>
+                                <Insets right="20.0" />
+                            </HBox.margin></Button>
+                        <Button mnemonicParsing="false" onAction="#saveTxt" text="Отчет" />
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+    </top>
+   <bottom>
+      <TabPane prefHeight="430.0" prefWidth="1307.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+        <tabs>
+            <Tab text="Выбранные расчетные данные">
+                <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                        <children>
+                            <TableView fx:id="tableVLV" prefHeight="394.0" prefWidth="1265.0">
+                           <columns>
+                              <TableColumn fx:id="ColumnGSM" prefWidth="232.3999908566475" text="Группа строительного материала" />
+                              <TableColumn fx:id="ColumnSM" minWidth="0.0" prefWidth="196.0" text="Строительный материал" />
+                              <TableColumn fx:id="ColumnMark" minWidth="0.0" prefWidth="199.00003051757812" text="Марка" />
+                              <TableColumn fx:id="ColumnS" minWidth="0.0" prefWidth="199.00003051757812" text="Площадь" />
+                           </columns>
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy></TableView>
+
+                        </children></AnchorPane>
+                </content>
+            </Tab>
+          <Tab text="Расчет выделения вредного вещества">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="ResultQ" layoutX="-3.0" layoutY="-2.0" prefHeight="398.0" prefWidth="1265.0">
+                          <columns>
+                            <TableColumn fx:id="ColumnQGSM" prefWidth="75.0" text="Группа строительных материалов" />
+                            <TableColumn fx:id="ColumnQSM" prefWidth="75.0" text="Строительный материал" />
+                              <TableColumn fx:id="ColumnQHS" prefWidth="75.0" text="Химический элемент" />
+                              <TableColumn fx:id="ColumnQ" prefWidth="75.0" text="Выделения вредного вещества" />
+                          </columns>
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
+                        </TableView>
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+            <Tab text="Расчет концентрации ВЛВ">
+                <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                        <children>
+                            <TableView fx:id="ResultP" layoutX="-3.0" layoutY="-2.0" prefHeight="398.0" prefWidth="1265.0">
+                                <columns>
+                                    <TableColumn fx:id="ColumnPGSM" prefWidth="75.0" text="Группа строительных материалов" />
+                                    <TableColumn fx:id="ColumnPSM" prefWidth="75.0" text="Строительный материал" />
+                                    <TableColumn fx:id="ColumnPHS" prefWidth="75.0" text="Химический элемент" />
+                                    <TableColumn fx:id="ColumnP" prefWidth="75.0" text="Концентрация ВЛВ" />
+                                </columns>
+                                <columnResizePolicy>
+                                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                </columnResizePolicy>
+                            </TableView>
+                        </children></AnchorPane>
+                </content>
+            </Tab>
+            <Tab text="Проверка превышения ПДК с учетом КК">
+                <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                        <children>
+                            <TableView fx:id="ResultPDK_KK" layoutX="-3.0" layoutY="-2.0" prefHeight="399.0" prefWidth="1265.0">
+                                <columns>
+                                    <TableColumn fx:id="ColumnPDK_KKGSM" prefWidth="75.0" text="Группа строительных материалов" />
+                                    <TableColumn fx:id="ColumnPDK_KKHS" prefWidth="75.0" text="Химический элемент" />
+                                    <TableColumn fx:id="ColumnPDK_KKSUMM" prefWidth="139.4000244140625" text="Сумма" />
+                                    <TableColumn fx:id="ColumnPDK_KK" prefWidth="320.60003662109375" text="ПДК с учетом КК" />
+                                    <TableColumn fx:id="ColumnPDK_KKRecommendation" prefWidth="75.0" text="Рекомендации" />
+                                </columns>
+                                <columnResizePolicy>
+                                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                </columnResizePolicy>
+                            </TableView>
+                        </children></AnchorPane>
+                </content>
+            </Tab>
+            <Tab text="Проверка превышения ПДК">
+                <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                        <children>
+                            <TableView fx:id="ResultPDK" layoutX="-3.0" layoutY="-2.0" prefHeight="399.0" prefWidth="1265.0">
+                                <columns>
+                                    <TableColumn fx:id="ColumnPDKHS" prefWidth="75.0" text="Химический элемент" />
+                                    <TableColumn fx:id="ColumnPDKSUMM" prefWidth="75.0" text="Сумма" />
+                                    <TableColumn fx:id="ColumnPDK" prefWidth="75.0" text="ПДК" />
+                                    <TableColumn fx:id="ColumnPDKRecommendation" prefWidth="75.0" text="Рекомендации" />
+                                </columns>
+                                <columnResizePolicy>
+                                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                </columnResizePolicy>
+                            </TableView>
+                        </children></AnchorPane>
+                </content>
+            </Tab>
+          <Tab text="График">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <BarChart fx:id="VLVChart" layoutX="14.0" layoutY="14.0" prefHeight="384.0" prefWidth="633.0" title="Концентрация ВЛВ">
+                          <xAxis>
+                            <CategoryAxis label="Группа строительных материалов" side="BOTTOM" fx:id="x" />
+                          </xAxis>
+                          <yAxis>
+                            <NumberAxis fx:id="y" label="мг/м³" side="LEFT" />
+                          </yAxis>
+                        </BarChart>
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+   </bottom>
+</BorderPane>
