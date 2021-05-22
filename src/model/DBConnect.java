@@ -12,7 +12,7 @@ public class DBConnect implements DAO{
     /**
      * Переменная: для подключения к базе данных
      */
-    private static final String DB_CONNECTION ="jdbc:sqlite:" + System.getProperty("user.dir")+"\\ChemicalDatabase" ;
+    private static final String DB_CONNECTION ="jdbc:sqlite::resource:ChemicalDatabase" ;
     private Connection dbConnection = null;
 
     public DBConnect() {
