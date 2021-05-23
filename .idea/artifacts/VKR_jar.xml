@@ -3,6 +3,7 @@
     <output-path>$PROJECT_DIR$/out/artifacts/VKR_jar</output-path>
     <root id="archive" name="VKR.jar">
       <element id="module-output" name="VKR" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../../../../Program Files/Java/jdk1.8.0_221/jre/lib/sqlite-jdbc-3.30.1.jar" path-in-jar="/" />
     </root>
   </artifact>
 </component>
